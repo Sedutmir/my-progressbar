@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 0 2em;
+}
+
+main {
+    padding: .5em;
+    flex-grow: 1;
+    display: flex;
+    gap: 10%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    padding: .5em;
+    width: clamp(1em, 300px, 50vh);
+    aspect-ratio: 1 / 1;
+}
+
+.progress {
+    --color-primary: #83d6ff;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5em;
+}
+
+.row {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+#value {
+    display: inline-block;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid #000;
+    padding: .3rem;
+    text-align: center;
+    width: 3rem;
+    height: 2rem;
+
+    /* Скрытие кнопок-стрелок */
+    appearance: textfield;
+}
+
+#animate, #hide {
+    display: none;
+}
+
+.checkbox {
+    display: inline-block;
+    border-radius: 1em;
+    background: #ddd;
+    width: 3rem;
+    height: 2rem;
+    padding: .2rem;
+    transition: all .3s;
+}
+
+.checkbox::before {
+    content: "";
+    position: relative;
+    left: 0;
+    transform: translateX(0);
+    display: inline-block;
+    height: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    background: #fff;
+    transition: all .3s;
+}
+
+.checkbox:has(> input[type=checkbox]:checked) {
+    background: #54d7ff;
+}
+
+.checkbox:has(> input[type=checkbox]:checked)::before {
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+@media (orientation: portrait) {
+    main { flex-direction: column; }
+    .container { width: clamp(1em, 300px, 50vw); }
+}

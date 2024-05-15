@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+:host {
+    --color-primary: #000;
+    --color-secondary: #ddd;
+    --color-background: #fff;
+    
+    --stroke-ratio: 0.92;
+    
+    --animate-duration: 1s;
+    
+    --val: 0;
+    --turn: calc(var(--val) / 100 * 1turn);
+    
+    display: inline-block;
+    min-width: 1em;
+    width: 100%;
+}
+
+:host([hidden]) {
+    display: none;
+}
+
+:host([animated]) div {
+    animation: animated-progress var(--animate-duration) infinite linear forwards;
+    --turn: 0.02turn;
+}
+
+div {
+    width: 100%;
+    position: relative;
+    
+    aspect-ratio: 1 / 1;
+
+    border-radius: 50%;
+
+    background: conic-gradient(
+        var(--color-primary) 0turn,
+        var(--color-primary) var(--turn),
+        var(--color-secondary) var(--turn),
+        var(--color-secondary) 1turn
+    );
+}
+
+/* В отличие от радиального градиента, в таком случае браузер отрисовывает внутренний круг без "ступенек" */
+div::after {
+    content: "";
+
+    display: inline-block;
+    width: calc(100% * var(--stroke-ratio));
+    height: calc(100% * var(--stroke-ratio));
+
+    border-radius: 50%;
+
+    background: var(--color-background);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes animated-progress {
+    0% {
+        --turn: 0.04turn;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        --turn: 0.07turn;
+        transform: rotate(80deg);
+    }
+
+    50% {
+        --turn: 0.10turn;
+        transform: rotate(190deg);
+    }
+
+    75% {
+        --turn: 0.07turn;
+        transform: rotate(290deg);
+    }
+
+    100% {
+        --turn: 0.04turn;
+        transform: rotate(360deg);
+    }
+}

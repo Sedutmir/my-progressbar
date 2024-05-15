@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozon - тестовое задание</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <template id="circle-loader-template">
+        <link rel="stylesheet" href="circle-loader/index.css">
+        <div id="progressbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+    </template>
+
+    <header>
+        <h1>Progress</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <circle-loader class="progress"></circle-loader>
+        </div>
+
+        <div class="controls">
+            <div class="row">
+                <input type="number" min="0" max="100" value="0" step="1" id="value">
+                <label for="value">
+                    Value
+                </label>
+            </div>
+            <div class="row">
+                <label class="checkbox">
+                    <input id="animate" type="checkbox">
+                </label>
+                <label for="animate">Animate</label>
+            </div>
+            <div class="row">
+                <label class="checkbox">
+                    <input id="hide" type="checkbox">
+                </label>
+                <label for="hide">Hide</label>
+            </div>
+        </div>
+    </main>
+
+    <script src="circle-loader/index.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
