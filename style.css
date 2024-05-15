@@ -24,6 +24,7 @@ main {
 
 .container {
     padding: .5em;
+    margin-right: 3em;
     width: clamp(1em, 300px, 50vh);
     aspect-ratio: 1 / 1;
 }
@@ -97,5 +98,5 @@ main {
 
 @media (orientation: portrait) {
     main { flex-direction: column; }
-    .container { width: clamp(1em, 300px, 50vw); }
+    .container { width: clamp(1em, 300px, 50vw); margin-right: 0; margin-bottom: 2em; }
 }
